@@ -1,0 +1,25 @@
+resources:
+- name: <vm-name>
+  type: compute.v1.instance
+  properties:
+    zone: <zone>
+    machineType: zones/ZONE/machineTypes/n1-standard-1
+    metadata:
+      items:
+      - key: startup-script
+        value: "apt-get update"
+      disks:
+      - devicesName: boot
+        type: PERSISTENT
+        boot: true
+        autoDelete: true
+        initializeParams:
+          sourceImage: projects/debian-cloud/global/images/family/debian-9
+      networkInterfaces:
+      - network: global/networks/default
+
+# for importing templates into the yaml file,
+
+imports:
+    - path: path/to/<vm-name>
+
