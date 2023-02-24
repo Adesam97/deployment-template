@@ -1,0 +1,20 @@
+name: Get Version Tag
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  get-version-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Get version tag
+        id: get-tag
+        run: echo "::set-output name=version::${GITHUB_REF#refs/tags/v}"
+      
+      - name: Show version tag
+        run: echo "Version tag is ${{ steps.get-tag.outputs.version }}"
