@@ -3,7 +3,7 @@ name: Get Version Tag
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - 'v1.*.*'
 
 jobs:
   get-version-tag:
